@@ -1,0 +1,22 @@
+{
+  "move_list": [
+    [0, 1],
+    [0,-1],
+    [1, 0],
+    [-1,0]
+  ],
+  "map_size": [3,3],
+  "start": [2,1],
+  "goal": [0,1],
+  "walls": [[0,0]],
+  "pits": [[1,2]],
+  "max_iterations": 1000,
+  "threshold_difference": 0.0001, 
+  "reward_step": 0.0,
+  "reward_goal": 10.0,
+  "reward_pits": -10.0,
+  "reward_wall": 0.0,
+  "learning_rate": 0.5,
+  "discount_factor": 1.00,
+  "generate_video": 1
+}
