@@ -21,11 +21,8 @@ class QLearn:
     self.getConfigs()
     self.generateMs()
     self.generateQs()
-    for i in range(100):
+    for i in range(1000):
       self.simulate()
-      #time.sleep(.1)
-      #sp.call('clear',shell=True)
-      #sys.stdout.flush()
     self.printMs()
     self.printRs([0,0])
     self.printPs()
@@ -82,7 +79,7 @@ class QLearn:
     maxq = max([self.q.get((npos,(x,y))) for x,y in self.movelist])
     if maxq == None: maxq = 0.0
     maxq *= self.gamma
-    self.q[(pos,action)] = oval + self.alpha*(self.rewardstep + maxq-oval)
+    self.q[(pos,action)] = oval + self.alpha*(self.rewardstep + self.gamma*maxq-oval)
     return list(npos)    
   def getAction(self,pos):
       if random.random() < self.epsilon:
@@ -105,8 +102,8 @@ class QLearn:
       self.printMs()
       self.printRs(current)
       self.printPs()
-      if current == self.start[0]: time.sleep(.75)
-      time.sleep(.5)
+      if current == self.start[0]: time.sleep(.15)
+      time.sleep(.1)
       sp.call('clear',shell=True)
       sys.stdout.flush()
 
